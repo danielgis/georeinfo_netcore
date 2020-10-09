@@ -57,8 +57,6 @@ var ie = (function() {
 
     if (!window.apiUrl) {
         console.error('no apiUrl.');
-    } else if (!window.path) {
-        console.error('no path.');
     } else {
         if (window.location.protocol === 'https:') {
             var reg = /^http:\/\//i;
@@ -67,6 +65,8 @@ var ie = (function() {
             }
             if (reg.test(window.path)) {
                 window.path = window.path.replace(reg, 'https://');
+            } else {
+                window.path = "/"
             }
         }
 
@@ -93,7 +93,7 @@ var ie = (function() {
             window.apiUrl + 'dijit/themes/claro/claro.css',
             window.apiUrl + 'esri/css/esri.css',
             // window.apiUrl + 'dojox/layout/resources/ResizeHandle.css',
-            window.path + 'jimu.js/css/jimu-theme.css',
+            '/jimu.js/css/jimu-theme.css',
             // window.path + 'libs/chartjs/Chart.min.js',
             'https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css',
             'https://cdn.jsdelivr.net/npm/chart.js@2.8.0',
@@ -153,19 +153,19 @@ var ie = (function() {
                 location: window.apiUrl + "esri"
             }, {
                 name: "widgets",
-                location: "widgets"
+                    location: "widgets"
             }, {
                 name: "jimu",
-                location: "jimu.js"
+                    location: "jimu.js"
             }, {
                 name: "themes",
-                location: "themes"
+                    location: "themes"
             }, {
                 name: "libs",
-                location: "libs"
+                    location: "libs"
             }, {
                 name: "dynamic-modules",
-                location: "dynamic-modules"
+                    location: "dynamic-modules"
             }];
 
             resources.push(window.apiUrl + '/dojo/dojo.js');
@@ -173,22 +173,22 @@ var ie = (function() {
             dojoConfig.baseUrl = window.apiUrl + 'dojo';
             dojoConfig.packages = [{
                 name: "widgets",
-                location: window.path + "widgets"
+                location: "/widgets"
             }, {
                 name: "jimu",
-                location: window.path + "jimu.js"
+                    location: "/jimu.js"
             }, {
                 name: "themes",
-                location: window.path + "themes"
+                    location:"/themes"
             }, {
                 name: "libs",
-                location: window.path + "libs"
+                    location: "/libs"
             }, {
                 name: "dynamic-modules",
-                location: window.path + "dynamic-modules"
+                    location: "/dynamic-modules"
             }, {
                 name: "configs",
-                location: window.path + "configs"
+                    location: "/configs"
             }];
 
             resources.push(window.apiUrl + 'init.js');
